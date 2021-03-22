@@ -39,7 +39,6 @@ class ViewController: UIViewController {
         
         // demo - subscribe
         o2 = .of(1, 2)
-        G_demoStep = .subscribe
         var subscription: Disposable?
         
         demo(of: "subscribe on event", step: .subscribe) {
@@ -72,6 +71,31 @@ class ViewController: UIViewController {
         }
         
         
+        
+        // demo - subjects
+        
+        demo(of: "PublishSubject", step: .subjects) {
+            let ps = PublishSubject<Int>()
+            let now = Date()
+            
+            let timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { t in
+                let secondsFromNow = Int(t.fireDate.timeIntervalSince(now))
+                ps.onNext(secondsFromNow)
+                if secondsFromNow >= 6 {
+                    ps.onCompleted()
+                }
+            }
+            
+            ps
+                .subscribe(onNext: { print($0) },
+                           onError: { print($0) },
+                           onCompleted: { print("completed") },
+                           onDisposed: {
+                            timer.invalidate()
+                            print("timer invalidated")
+                           })
+                .disposed(by: bag)
+        }
     }
 
 

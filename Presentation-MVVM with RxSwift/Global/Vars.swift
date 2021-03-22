@@ -7,4 +7,4 @@
 
 import Foundation
 
-var G_demoStep: DemoStep = .subscribe
+var G_demoStep: DemoStep = .subjects
