@@ -14,6 +14,8 @@
 		22E80D2E2608FAD60093F634 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22E80D2D2608FAD60093F634 /* Assets.xcassets */; };
 		22E80D312608FAD60093F634 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22E80D2F2608FAD60093F634 /* LaunchScreen.storyboard */; };
 		22E80D44260909AD0093F634 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E80D43260909AD0093F634 /* Utils.swift */; };
+		22E80D4826090DC70093F634 /* Vars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E80D4726090DC70093F634 /* Vars.swift */; };
+		22E80D4B26090DDC0093F634 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E80D4A26090DDC0093F634 /* Enums.swift */; };
 		9D802AF5D6018B6F28FB152F /* Pods_Presentation_MVVM_with_RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9291C922275CB6FF361E6CF8 /* Pods_Presentation_MVVM_with_RxSwift.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +29,8 @@
 		22E80D302608FAD60093F634 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22E80D322608FAD60093F634 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22E80D43260909AD0093F634 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		22E80D4726090DC70093F634 /* Vars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vars.swift; sourceTree = "<group>"; };
+		22E80D4A26090DDC0093F634 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		7A6531994E70DEFA83E17286 /* Pods-Presentation-MVVM with RxSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Presentation-MVVM with RxSwift.debug.xcconfig"; path = "Target Support Files/Pods-Presentation-MVVM with RxSwift/Pods-Presentation-MVVM with RxSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		9291C922275CB6FF361E6CF8 /* Pods_Presentation_MVVM_with_RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Presentation_MVVM_with_RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DACDC65B8BE4363EA69565ED /* Pods-Presentation-MVVM with RxSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Presentation-MVVM with RxSwift.release.xcconfig"; path = "Target Support Files/Pods-Presentation-MVVM with RxSwift/Pods-Presentation-MVVM with RxSwift.release.xcconfig"; sourceTree = "<group>"; };
@@ -65,6 +69,7 @@
 		22E80D232608FAD50093F634 /* Presentation-MVVM with RxSwift */ = {
 			isa = PBXGroup;
 			children = (
+				22E80D4626090DBB0093F634 /* Global */,
 				22E80D242608FAD50093F634 /* AppDelegate.swift */,
 				22E80D262608FAD50093F634 /* SceneDelegate.swift */,
 				22E80D282608FAD50093F634 /* ViewController.swift */,
@@ -75,6 +80,15 @@
 				22E80D43260909AD0093F634 /* Utils.swift */,
 			);
 			path = "Presentation-MVVM with RxSwift";
+			sourceTree = "<group>";
+		};
+		22E80D4626090DBB0093F634 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				22E80D4726090DC70093F634 /* Vars.swift */,
+				22E80D4A26090DDC0093F634 /* Enums.swift */,
+			);
+			path = Global;
 			sourceTree = "<group>";
 		};
 		A98E98CD1EA252DB96DFA921 /* Pods */ = {
@@ -208,9 +222,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22E80D4826090DC70093F634 /* Vars.swift in Sources */,
 				22E80D292608FAD50093F634 /* ViewController.swift in Sources */,
 				22E80D252608FAD50093F634 /* AppDelegate.swift in Sources */,
 				22E80D272608FAD50093F634 /* SceneDelegate.swift in Sources */,
+				22E80D4B26090DDC0093F634 /* Enums.swift in Sources */,
 				22E80D44260909AD0093F634 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

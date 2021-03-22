@@ -7,7 +7,9 @@
 
 import Foundation
 
-public func example(of description: String, action: () -> Void) {
-    print("\n--- Example of:", description, "---")
+public func demo(of description: String, step: DemoStep, action: () -> Void) {
+    guard step == G_demoStep else { return }
+    
+    print("\n--- Demo:", description, "---")
     action()
 }
