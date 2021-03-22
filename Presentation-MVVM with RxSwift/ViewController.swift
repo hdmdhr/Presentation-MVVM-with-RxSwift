@@ -6,12 +6,17 @@
 //
 
 import UIKit
+import RxSwift
 
 class ViewController: UIViewController {
 
+    let o = PublishSubject<Void>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        
+        o.on(Event<Void>.completed)
     }
 
 
