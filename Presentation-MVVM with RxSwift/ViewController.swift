@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 class ViewController: UIViewController {
 
@@ -94,6 +95,34 @@ class ViewController: UIViewController {
                             timer.invalidate()
                             print("timer invalidated")
                            })
+                .disposed(by: bag)
+        }
+        
+        
+        // demo - relay
+        
+        demo(of: "Relay", step: .relay) {
+            let pr: PublishRelay<Int> = .init()
+            let br: BehaviorRelay<Int> = .init(value: 0)
+            let rr: ReplayRelay<Int> = .create(bufferSize: 2)
+            
+            pr.accept(0)
+            br.accept(1)
+            rr.accept(0)
+            rr.accept(1)
+            rr.accept(2)
+            
+            _ = pr.bind(onNext: { print("pr: ", $0) })
+            _ = br.bind(onNext: { print("br: ", $0) })
+            _ = rr.bind(onNext: { print("rr: ", $0) })
+        }
+        
+        
+        // demo - RxCocoa binding method
+        
+        demo(of: "RxCocoa", step: .rxcocoa) {
+            Observable.just("button title")
+                .bind(to: UIButton().rx.title(for: []))
                 .disposed(by: bag)
         }
     }

@@ -10,4 +10,6 @@ import Foundation
 public enum DemoStep: Int {
     case subscribe
     case subjects
+    case relay
+    case rxcocoa
 }
