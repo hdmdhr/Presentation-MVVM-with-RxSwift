@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22115BAA260A8B0000952031 /* FavDateSpotsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22115BA9260A8B0000952031 /* FavDateSpotsVC.swift */; };
 		22E80D252608FAD50093F634 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E80D242608FAD50093F634 /* AppDelegate.swift */; };
 		22E80D272608FAD50093F634 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E80D262608FAD50093F634 /* SceneDelegate.swift */; };
 		22E80D292608FAD50093F634 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E80D282608FAD50093F634 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		22115BA9260A8B0000952031 /* FavDateSpotsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavDateSpotsVC.swift; sourceTree = "<group>"; };
 		22E80D212608FAD50093F634 /* Presentation-MVVM with RxSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Presentation-MVVM with RxSwift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22E80D242608FAD50093F634 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22E80D262608FAD50093F634 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +50,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22115BA8260A8ADE00952031 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				22E80D282608FAD50093F634 /* ViewController.swift */,
+				22115BA9260A8B0000952031 /* FavDateSpotsVC.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		22E80D182608FAD50093F634 = {
 			isa = PBXGroup;
 			children = (
@@ -72,7 +83,7 @@
 				22E80D4626090DBB0093F634 /* Global */,
 				22E80D242608FAD50093F634 /* AppDelegate.swift */,
 				22E80D262608FAD50093F634 /* SceneDelegate.swift */,
-				22E80D282608FAD50093F634 /* ViewController.swift */,
+				22115BA8260A8ADE00952031 /* ViewController */,
 				22E80D2A2608FAD50093F634 /* Main.storyboard */,
 				22E80D2D2608FAD60093F634 /* Assets.xcassets */,
 				22E80D2F2608FAD60093F634 /* LaunchScreen.storyboard */,
@@ -222,6 +233,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22115BAA260A8B0000952031 /* FavDateSpotsVC.swift in Sources */,
 				22E80D4826090DC70093F634 /* Vars.swift in Sources */,
 				22E80D292608FAD50093F634 /* ViewController.swift in Sources */,
 				22E80D252608FAD50093F634 /* AppDelegate.swift in Sources */,
