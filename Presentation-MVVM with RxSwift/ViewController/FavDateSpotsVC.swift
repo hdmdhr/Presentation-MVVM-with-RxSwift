@@ -6,10 +6,19 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class FavDateSpotsVC: UIViewController, BindableType {
-
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var collection: UICollectionView!
+    @IBOutlet weak var table: UITableView!
+    
     var vm: FavDateSpotsVM!
+    
+    // rx
+    let bag = DisposeBag()
     
     // MARK: - Init
     
@@ -32,7 +41,18 @@ class FavDateSpotsVC: UIViewController, BindableType {
     // MARK: - Binding
     
     func bindViewModel() {
+        let o = Observable.just(["Restaurant", "Gym", "Theatre"])
+        o
+            .bind(to: table.rx.items(cellIdentifier: "Cell")) { row, data, cell in
+                cell.textLabel?.text = data + " \(row)"
+            }
+            .disposed(by: bag)
         
+        o
+            .bind(to: collection.rx.items(cellIdentifier: "FilterButtonCollectionCell", cellType: FilterButtonCollectionCell.self)) { row, data, cell in
+                cell.filterButton.setTitle(data, for: [])
+            }
+            .disposed(by: bag)
     }
 
 }
