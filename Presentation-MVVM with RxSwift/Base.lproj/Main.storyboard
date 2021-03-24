@@ -249,6 +249,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Search new Spots" id="cbp-Ry-zYc"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="c_collectionHeight" destination="Gom-EA-KGr" id="MAe-W1-WcJ"/>
                         <outlet property="collection" destination="KoB-k9-dGN" id="YlX-cl-2fx"/>
                         <outlet property="searchBar" destination="c6Z-qP-f3x" id="uTt-qm-Vy7"/>
                         <outlet property="spinner" destination="zIO-ld-DUD" id="REw-se-DQ2"/>

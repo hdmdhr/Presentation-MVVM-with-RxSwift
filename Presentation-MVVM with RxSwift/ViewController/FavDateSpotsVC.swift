@@ -19,6 +19,8 @@ class FavDateSpotsVC: UIViewController, BindableType {
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
+    @IBOutlet weak var c_collectionHeight: NSLayoutConstraint!
+    
     var vm: FavDateSpotsVM!
     
     // rx
@@ -72,6 +74,20 @@ class FavDateSpotsVC: UIViewController, BindableType {
         
         vm.getPlacesAction.elements
             .bind(to: table.rx.items(dataSource: datasource))
+            .disposed(by: bag)
+        
+        table.rx.willEndDragging
+            .map { (velocity: CGPoint, targetContentOffset) in
+                velocity.y > 0  // scroll down
+            }
+            .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .subscribe(onNext: { [weak self] down in
+                self?.c_collectionHeight.constant = down ? .leastNormalMagnitude : 50
+                UIView.animate(withDuration: 0.3, animations: {
+                    self?.collection.superview?.layoutIfNeeded()
+                })
+            })
             .disposed(by: bag)
         
         // MARK: - Bind SearchBar
