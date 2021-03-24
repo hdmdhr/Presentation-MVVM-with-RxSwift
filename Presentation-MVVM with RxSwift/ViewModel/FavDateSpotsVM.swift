@@ -6,7 +6,18 @@
 //
 
 import RxSwift
+import Action
 
 class FavDateSpotsVM {
+    
+    let apiClient: AApiClient
+    
+    // MARK: - Init
+    
+    init(apiClient: AApiClient) {
+        self.apiClient = apiClient
+    }
+    
+    
     
 }

@@ -13,3 +13,15 @@ public enum DemoStep: Int {
     case relay
     case rxcocoa
 }
+
+
+enum PlaceType: String, Codable {
+    case Restaurant, Gym, Theatre
+    
+    var imageName: String {
+        switch self {
+        case .Restaurant where Bool.random(): return "bar"
+        default: return rawValue.lowercased()
+        }
+    }
+}
