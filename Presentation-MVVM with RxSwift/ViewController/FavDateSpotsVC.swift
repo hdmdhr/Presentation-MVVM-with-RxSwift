@@ -47,8 +47,6 @@ class FavDateSpotsVC: UIViewController, BindableType {
         // rx drive collection
         typealias CollectionSection = FavDateSpotsVM.CollectionSection
         
-        let staticCollectionDatasource = Observable<[PlaceType?]>.just([nil] + PlaceType.allCases)
-        
         let collectionDatasource = RxCollectionViewSectionedAnimatedDataSource<CollectionSection>(configureCell: { (ds, cv, ip, item) in
             let cell = cv.dequeueCell(FilterButtonCollectionCell.self, for: ip)
             cell.configure(for: item)
@@ -56,12 +54,7 @@ class FavDateSpotsVC: UIViewController, BindableType {
             return cell
         })
         
-        Observable.combineLatest(staticCollectionDatasource, vm.output.selectedPlaceType)
-            .map{ allTypes, selectedType in
-                [CollectionSection(model: 0,
-                                  items: allTypes.map{ .init(placeType: $0, selected: $0 == selectedType) })]
-            }
-            .asDriver(onErrorJustReturn: [])
+        vm.output.collectionDatasource
             .drive(collection.rx.items(dataSource: collectionDatasource))
             .disposed(by: bag)
         

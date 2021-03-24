@@ -15,6 +15,8 @@ class FavDateSpotsVM {
     
     let apiClient: AApiClient
     
+    let staticCollectionDatasource = Observable<[PlaceType?]>.just([nil] + PlaceType.allCases)
+    
     // rx
     private let rx_selectedPlaceType: BehaviorSubject<PlaceType?> = .init(value: nil)
     private let bag = DisposeBag()
@@ -41,10 +43,18 @@ class FavDateSpotsVM {
     // MARK: - Output
     
     struct Output {
-        let selectedPlaceType: Observable<PlaceType?>
+        let collectionDatasource: Driver<[CollectionSection]>
     }
     
-    private(set) lazy var output: Output = .init(selectedPlaceType: rx_selectedPlaceType.asObservable())
+    private(set) lazy var output: Output = {
+        .init(collectionDatasource: Observable.combineLatest(staticCollectionDatasource, rx_selectedPlaceType)
+                .map{ allTypes, selectedType in
+                    [CollectionSection(model: 0,
+                                       items: allTypes.map{ .init(placeType: $0, selected: $0 == selectedType) })]
+                }
+                .asDriver(onErrorJustReturn: [])
+        )
+    }()
     
     // MARK: - Definition
     
