@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 import Alamofire
+import Action
 
 class FavDateSpotsVC: UIViewController, BindableType {
     
@@ -43,15 +44,28 @@ class FavDateSpotsVC: UIViewController, BindableType {
     // MARK: - Binding
     
     func bindViewModel() {
-        // static data for collection
-        Observable.just(["Restaurant", "Gym", "Theatre"])
-            .bind(to: collection.rx.items(cellIdentifier: "FilterButtonCollectionCell", cellType: FilterButtonCollectionCell.self)) { row, data, cell in
-                cell.filterButton.setTitle(data, for: [])
+        // rx drive collection
+        typealias CollectionSection = FavDateSpotsVM.CollectionSection
+        
+        let staticCollectionDatasource = Observable<[PlaceType?]>.just([nil] + PlaceType.allCases)
+        
+        let collectionDatasource = RxCollectionViewSectionedAnimatedDataSource<CollectionSection>(configureCell: { (ds, cv, ip, item) in
+            let cell = cv.dequeueCell(FilterButtonCollectionCell.self, for: ip)
+            cell.configure(for: item)
+            
+            return cell
+        })
+        
+        Observable.combineLatest(staticCollectionDatasource, vm.output.selectedPlaceType)
+            .map{ allTypes, selectedType in
+                [CollectionSection(model: 0,
+                                  items: allTypes.map{ .init(placeType: $0, selected: $0 == selectedType) })]
             }
+            .asDriver(onErrorJustReturn: [])
+            .drive(collection.rx.items(dataSource: collectionDatasource))
             .disposed(by: bag)
         
-        
-        // rx datasources for table
+        // rx drive table
         typealias TableSection = FavDateSpotsVM.TableSection
         
         let datasource = RxTableViewSectionedAnimatedDataSource<TableSection>(configureCell: { (ds, tv, ip, item) in

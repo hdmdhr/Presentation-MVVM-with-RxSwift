@@ -15,7 +15,7 @@ public enum DemoStep: Int {
 }
 
 
-enum PlaceType: String, Codable {
+enum PlaceType: String, Codable, CaseIterable {
     case Restaurant, Gym, Theatre
     
     var imageName: String {

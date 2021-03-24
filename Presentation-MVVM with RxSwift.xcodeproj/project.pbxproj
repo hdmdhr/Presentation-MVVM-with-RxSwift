@@ -21,6 +21,8 @@
 		22115BD8260BB23300952031 /* PlaceUi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22115BD7260BB23300952031 /* PlaceUi.swift */; };
 		22115BDF260BB84900952031 /* PlaceCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22115BDE260BB84900952031 /* PlaceCardCell.swift */; };
 		22115BE3260BBF2600952031 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22115BE2260BBF2600952031 /* UIViewController+Alert.swift */; };
+		22115BF0260BDD6C00952031 /* AnyObserver+Relay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22115BEF260BDD6C00952031 /* AnyObserver+Relay.swift */; };
+		22115BF3260BE43C00952031 /* UICollectionView+Dequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22115BF2260BE43C00952031 /* UICollectionView+Dequeue.swift */; };
 		22E80D252608FAD50093F634 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E80D242608FAD50093F634 /* AppDelegate.swift */; };
 		22E80D272608FAD50093F634 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E80D262608FAD50093F634 /* SceneDelegate.swift */; };
 		22E80D292608FAD50093F634 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E80D282608FAD50093F634 /* ViewController.swift */; };
@@ -48,6 +50,8 @@
 		22115BD7260BB23300952031 /* PlaceUi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceUi.swift; sourceTree = "<group>"; };
 		22115BDE260BB84900952031 /* PlaceCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCardCell.swift; sourceTree = "<group>"; };
 		22115BE2260BBF2600952031 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
+		22115BEF260BDD6C00952031 /* AnyObserver+Relay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyObserver+Relay.swift"; sourceTree = "<group>"; };
+		22115BF2260BE43C00952031 /* UICollectionView+Dequeue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Dequeue.swift"; sourceTree = "<group>"; };
 		22E80D212608FAD50093F634 /* Presentation-MVVM with RxSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Presentation-MVVM with RxSwift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22E80D242608FAD50093F634 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22E80D262608FAD50093F634 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +114,7 @@
 			children = (
 				22115BBC260A92CC00952031 /* FilterButtonCollectionCell.swift */,
 				22115BDE260BB84900952031 /* PlaceCardCell.swift */,
+				22115BF2260BE43C00952031 /* UICollectionView+Dequeue.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -150,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				22115BE2260BBF2600952031 /* UIViewController+Alert.swift */,
+				22115BEF260BDD6C00952031 /* AnyObserver+Relay.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -337,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22115BAA260A8B0000952031 /* FavDateSpotsVC.swift in Sources */,
+				22115BF0260BDD6C00952031 /* AnyObserver+Relay.swift in Sources */,
 				22115BB4260A8C1F00952031 /* BindableType.swift in Sources */,
 				22115BBD260A92CC00952031 /* FilterButtonCollectionCell.swift in Sources */,
 				22115BC1260BAA3D00952031 /* MyApiClient.swift in Sources */,
@@ -344,6 +351,7 @@
 				22E80D4826090DC70093F634 /* Vars.swift in Sources */,
 				22115BD0260BB12400952031 /* AApiClient.swift in Sources */,
 				22115BB7260A8F9E00952031 /* TableViewController.swift in Sources */,
+				22115BF3260BE43C00952031 /* UICollectionView+Dequeue.swift in Sources */,
 				22E80D292608FAD50093F634 /* ViewController.swift in Sources */,
 				22115BD8260BB23300952031 /* PlaceUi.swift in Sources */,
 				22E80D252608FAD50093F634 /* AppDelegate.swift in Sources */,

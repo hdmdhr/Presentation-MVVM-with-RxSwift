@@ -6,6 +6,7 @@
 //
 
 import RxSwift
+import RxCocoa
 import RxDataSources
 import Action
 
@@ -14,16 +15,41 @@ class FavDateSpotsVM {
     
     let apiClient: AApiClient
     
+    // rx
+    private let rx_selectedPlaceType: BehaviorSubject<PlaceType?> = .init(value: nil)
+    private let bag = DisposeBag()
+    
     // MARK: - Init
     
     init(apiClient: AApiClient) {
         self.apiClient = apiClient
+        
+        rx_selectedPlaceType.skip(1)  // skip 1 to skip BehaviorSubject initial value
+            .bind(to: getPlacesAction.inputs)
+            .disposed(by: bag)
     }
     
+    // MARK: - Input
+    
+    struct Input {
+        let selectedPlaceType: AnyObserver<PlaceType?>
+    }
+    
+    private(set) lazy var input: Input = .init(selectedPlaceType: rx_selectedPlaceType.asObserver())
+    
+    
+    // MARK: - Output
+    
+    struct Output {
+        let selectedPlaceType: Observable<PlaceType?>
+    }
+    
+    private(set) lazy var output: Output = .init(selectedPlaceType: rx_selectedPlaceType.asObservable())
     
     // MARK: - Definition
     
     typealias TableSection = AnimatableSectionModel<Int, PlaceUi>
+    typealias CollectionSection = AnimatableSectionModel<Int, FilterButtonCollectionCell.Data>
     
     
     // MARK: - Get Places Action
