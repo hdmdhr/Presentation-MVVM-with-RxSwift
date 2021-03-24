@@ -47,9 +47,12 @@ class FavDateSpotsVC: UIViewController, BindableType {
         // rx drive collection
         typealias CollectionSection = FavDateSpotsVM.CollectionSection
         
-        let collectionDatasource = RxCollectionViewSectionedAnimatedDataSource<CollectionSection>(configureCell: { (ds, cv, ip, item) in
+        let collectionDatasource = RxCollectionViewSectionedAnimatedDataSource<CollectionSection>(configureCell: { [unowned self] (ds, cv, ip, item) in
             let cell = cv.dequeueCell(FilterButtonCollectionCell.self, for: ip)
             cell.configure(for: item)
+            cell.filterButton.rx.tap.map{ item.placeType }
+                .bind(to: self.vm.input.selectedPlaceType)
+                .disposed(by: cell.bag)
             
             return cell
         })

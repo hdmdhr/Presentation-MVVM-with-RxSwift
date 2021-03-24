@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 import RxDataSources
 
 class FilterButtonCollectionCell: UICollectionViewCell {
@@ -20,6 +21,9 @@ class FilterButtonCollectionCell: UICollectionViewCell {
     
     @IBOutlet weak var filterButton: UIButton!
     
+    // rx
+    private(set) var bag = DisposeBag()
+    
     private let defaultBorderColor = UIColor.secondaryLabel.withAlphaComponent(0.25).cgColor
     private let selectedColor: UIColor = .systemPink
     
@@ -29,10 +33,18 @@ class FilterButtonCollectionCell: UICollectionViewCell {
         filterButton.layer.borderColor = data.selected ? selectedColor.cgColor : defaultBorderColor
     }
     
+    // MARK: - Lifecycles
+    
     override func awakeFromNib() {
         filterButton.layer.cornerRadius = 5
         filterButton.layer.borderColor = defaultBorderColor
         filterButton.layer.borderWidth = 1
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        bag = .init()
     }
     
 }
