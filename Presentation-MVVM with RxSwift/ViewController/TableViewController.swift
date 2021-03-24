@@ -24,7 +24,7 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 1:
-            let favDateSpotsVc = FavDateSpotsVC.initWith(vm: .init())
+            let favDateSpotsVc = FavDateSpotsVC.initWith(vm: .init(apiClient: MyApiClient()))
             navigationController?.pushViewController(favDateSpotsVc, animated: true)
             
         default: break

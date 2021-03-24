@@ -19,6 +19,8 @@
 		22115BD0260BB12400952031 /* AApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22115BCF260BB12400952031 /* AApiClient.swift */; };
 		22115BD4260BB1F600952031 /* UiConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22115BD3260BB1F600952031 /* UiConvertible.swift */; };
 		22115BD8260BB23300952031 /* PlaceUi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22115BD7260BB23300952031 /* PlaceUi.swift */; };
+		22115BDF260BB84900952031 /* PlaceCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22115BDE260BB84900952031 /* PlaceCardCell.swift */; };
+		22115BE3260BBF2600952031 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22115BE2260BBF2600952031 /* UIViewController+Alert.swift */; };
 		22E80D252608FAD50093F634 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E80D242608FAD50093F634 /* AppDelegate.swift */; };
 		22E80D272608FAD50093F634 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E80D262608FAD50093F634 /* SceneDelegate.swift */; };
 		22E80D292608FAD50093F634 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E80D282608FAD50093F634 /* ViewController.swift */; };
@@ -44,6 +46,8 @@
 		22115BCF260BB12400952031 /* AApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AApiClient.swift; sourceTree = "<group>"; };
 		22115BD3260BB1F600952031 /* UiConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiConvertible.swift; sourceTree = "<group>"; };
 		22115BD7260BB23300952031 /* PlaceUi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceUi.swift; sourceTree = "<group>"; };
+		22115BDE260BB84900952031 /* PlaceCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCardCell.swift; sourceTree = "<group>"; };
+		22115BE2260BBF2600952031 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		22E80D212608FAD50093F634 /* Presentation-MVVM with RxSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Presentation-MVVM with RxSwift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22E80D242608FAD50093F634 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22E80D262608FAD50093F634 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				22115BBC260A92CC00952031 /* FilterButtonCollectionCell.swift */,
+				22115BDE260BB84900952031 /* PlaceCardCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -141,6 +146,14 @@
 			path = "UI Model";
 			sourceTree = "<group>";
 		};
+		22115BE1260BBF0B00952031 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				22115BE2260BBF2600952031 /* UIViewController+Alert.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		22E80D182608FAD50093F634 = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +186,7 @@
 				22115BA8260A8ADE00952031 /* ViewController */,
 				22115BBA260A929500952031 /* View */,
 				22115BD2260BB1C800952031 /* UI Model */,
+				22115BE1260BBF0B00952031 /* Extensions */,
 				22E80D2A2608FAD50093F634 /* Main.storyboard */,
 				22E80D2D2608FAD60093F634 /* Assets.xcassets */,
 				22E80D2F2608FAD60093F634 /* LaunchScreen.storyboard */,
@@ -337,9 +351,11 @@
 				22115BCD260BAD4300952031 /* Place.swift in Sources */,
 				22E80D4B26090DDC0093F634 /* Enums.swift in Sources */,
 				22115BC7260BABF500952031 /* PlaceRemote.swift in Sources */,
+				22115BE3260BBF2600952031 /* UIViewController+Alert.swift in Sources */,
 				22115BCA260BACF500952031 /* DomainConvertible.swift in Sources */,
 				22115BB1260A8BD700952031 /* FavDateSpotsVM.swift in Sources */,
 				22E80D44260909AD0093F634 /* Utils.swift in Sources */,
+				22115BDF260BB84900952031 /* PlaceCardCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

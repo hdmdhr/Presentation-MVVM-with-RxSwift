@@ -8,12 +8,15 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxDataSources
+import Alamofire
 
 class FavDateSpotsVC: UIViewController, BindableType {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var table: UITableView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     var vm: FavDateSpotsVM!
     
@@ -34,25 +37,50 @@ class FavDateSpotsVC: UIViewController, BindableType {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
 
     // MARK: - Binding
     
     func bindViewModel() {
-        let o = Observable.just(["Restaurant", "Gym", "Theatre"])
-        o
-            .bind(to: table.rx.items(cellIdentifier: "Cell")) { row, data, cell in
-                cell.textLabel?.text = data + " \(row)"
-            }
-            .disposed(by: bag)
-        
-        o
+        // static data for collection
+        Observable.just(["Restaurant", "Gym", "Theatre"])
             .bind(to: collection.rx.items(cellIdentifier: "FilterButtonCollectionCell", cellType: FilterButtonCollectionCell.self)) { row, data, cell in
                 cell.filterButton.setTitle(data, for: [])
             }
             .disposed(by: bag)
+        
+        
+        // rx datasources for table
+        typealias TableSection = FavDateSpotsVM.TableSection
+        
+        let datasource = RxTableViewSectionedAnimatedDataSource<TableSection>(configureCell: { (ds, tv, ip, item) in
+            let cell = tv.dequeueReusableCell(withIdentifier: String(describing: PlaceCardCell.self)) as! PlaceCardCell
+            cell.configure(for: item)
+            
+            return cell
+        })
+        
+        vm.getPlacesAction.elements
+            .bind(to: table.rx.items(dataSource: datasource))
+            .disposed(by: bag)
+        
+        
+        // handle errors
+        vm.getPlacesAction.underlyingError
+            .bind(onNext: { [weak self] in  self?.presentErrorAlert(error: $0) })
+            .disposed(by: bag)
+        
+        // animate loading spinner
+        vm.getPlacesAction.executing
+            .bind(to: spinner.rx.isAnimating)
+            .disposed(by: bag)
+        
+        // to ensure return data can be displayed in table, fetch places after binding table datasource
+        // pass nil for place type to fetch all types
+        vm.getPlacesAction.execute(nil)
+        
     }
 
 }
+
