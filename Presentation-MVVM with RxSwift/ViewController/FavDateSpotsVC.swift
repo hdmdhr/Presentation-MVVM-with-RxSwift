@@ -39,7 +39,6 @@ class FavDateSpotsVC: UIViewController, BindableType {
         super.viewDidLoad()
 
     }
-    
 
     // MARK: - Binding
     
@@ -75,6 +74,14 @@ class FavDateSpotsVC: UIViewController, BindableType {
             .bind(to: table.rx.items(dataSource: datasource))
             .disposed(by: bag)
         
+        // MARK: - Bind SearchBar
+        
+        searchBar.rx.text
+            .skip(while: { $0 == nil || $0!.isEmpty })
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .bind(to: vm.input.searchKeyword)
+            .disposed(by: bag)
         
         // handle errors
         vm.getPlacesAction.underlyingError
@@ -88,8 +95,7 @@ class FavDateSpotsVC: UIViewController, BindableType {
         
         // to ensure return data can be displayed in table, fetch places after binding table datasource
         // pass nil for place type to fetch all types
-        vm.getPlacesAction.execute(nil)
-        
+        vm.getPlacesAction.execute((placeType: nil, keyword: nil))
     }
 
 }

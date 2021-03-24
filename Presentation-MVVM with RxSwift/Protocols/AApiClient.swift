@@ -8,5 +8,5 @@
 import RxSwift
 
 protocol AApiClient {
-    func getPlaces(placeType: PlaceType?) -> Observable<[PlaceRemote]>
+    func getPlaces(placeType: PlaceType?, keyword: String?) -> Observable<[PlaceRemote]>
 }

@@ -19,6 +19,7 @@ class FavDateSpotsVM {
     
     // rx
     private let rx_selectedPlaceType: BehaviorSubject<PlaceType?> = .init(value: nil)
+    private let rx_searchKeyword: BehaviorSubject<String?> = .init(value: nil)
     private let bag = DisposeBag()
     
     // MARK: - Init
@@ -26,7 +27,9 @@ class FavDateSpotsVM {
     init(apiClient: AApiClient) {
         self.apiClient = apiClient
         
-        rx_selectedPlaceType.skip(1)  // skip 1 to skip BehaviorSubject initial value
+        Observable.combineLatest(rx_selectedPlaceType, rx_searchKeyword)
+            .map{ $0 }
+            .skip(until: output.collectionDatasource.asObservable())
             .bind(to: getPlacesAction.inputs)
             .disposed(by: bag)
     }
@@ -35,9 +38,11 @@ class FavDateSpotsVM {
     
     struct Input {
         let selectedPlaceType: AnyObserver<PlaceType?>
+        let searchKeyword: AnyObserver<String?>
     }
     
-    private(set) lazy var input: Input = .init(selectedPlaceType: rx_selectedPlaceType.asObserver())
+    private(set) lazy var input: Input = .init(selectedPlaceType: rx_selectedPlaceType.asObserver(),
+                                               searchKeyword: rx_searchKeyword.asObserver())
     
     
     // MARK: - Output
@@ -65,8 +70,10 @@ class FavDateSpotsVM {
     // MARK: - Get Places Action
     
     /// Input: `PlaceType?` to query places by type; Output: `[TableSection]` to drive UITableView
-    private(set) lazy var getPlacesAction: Action<PlaceType?, [TableSection]> = .init(workFactory: { [unowned self] placeType in
-        self.apiClient.getPlaces(placeType: placeType)
+    typealias GetPlacesAction = Action<(placeType: PlaceType?, keyword: String?), [TableSection]>
+    
+    private(set) lazy var getPlacesAction: GetPlacesAction = .init(workFactory: { [unowned self] (placeType, keyword) in
+        self.apiClient.getPlaces(placeType: placeType, keyword: keyword)
             .map{ TableSection(model: 0, items: $0.map(\.toDomain).map(\.toUi)) }
             .map{ [$0] }
             .observe(on: MainScheduler.instance)
